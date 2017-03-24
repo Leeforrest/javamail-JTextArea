@@ -58,8 +58,8 @@ public class MailService {
      */
     public MailService() {
             this.mailHost = "smtp.263.net";
-            this.sender_username = "lvlinlin@landsky.cn";
-            this.sender_password = "sophia8831";
+            this.sender_username = "mailaddress";
+            this.sender_password = "password";
 
         properties.setProperty("mail.sender.username", this.sender_username);
         properties.setProperty("mail.sender.password", this.sender_password);
