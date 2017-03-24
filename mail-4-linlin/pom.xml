@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>xiaodong</groupId>
+  <artifactId>mail-4-linlin</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>mail-4-linlin</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+  </properties>
+
+  <dependencies>
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>3.10-FINAL</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi-ooxml</artifactId>
+		<version>3.10-FINAL</version>
+	</dependency>
+	<dependency>
+		<groupId>net.sf.opencsv</groupId>
+		<artifactId>opencsv</artifactId>
+		<version>2.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.eclipse</groupId>
+	    <artifactId>swt</artifactId>
+	    <version>3.7.2</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.jtattoo/JTattoo -->
+	<dependency>
+	    <groupId>com.jtattoo</groupId>
+	    <artifactId>JTattoo</artifactId>
+	    <version>1.6.11</version>
+	</dependency>
+
+ 		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency> 
+<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4.7</version>
+</dependency>
+
+
+		
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+	<build>
+    	<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+            <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                        <goal>shade</goal>
+                </goals>
+                    <configuration>
+                        <transformers>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>xiaodong.mail_4_linlin.App</mainClass>
+                            </transformer>
+                        </transformers>
+                    </configuration>
+            </execution>
+        </executions>
+     </plugin>
+        </plugins>
+	</build>
+</project>
