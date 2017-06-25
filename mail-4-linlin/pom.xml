@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>xiaodong</groupId>
-  <artifactId>mail-4-linlin</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>app</artifactId>
+  <version>0.1</version>
   <packaging>jar</packaging>
 
-  <name>mail-4-linlin</name>
+  <name>target</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -32,11 +32,10 @@
 		<artifactId>opencsv</artifactId>
 		<version>2.0</version>
 	</dependency>
-	<dependency>
+	<!--<dependency>
 	    <groupId>org.eclipse</groupId>
 	    <artifactId>swt</artifactId>
-	    <version>3.7.2</version>
-	</dependency>
+	</dependency>-->
 	<!-- https://mvnrepository.com/artifact/com.jtattoo/JTattoo -->
 	<dependency>
 	    <groupId>com.jtattoo</groupId>
@@ -65,42 +64,60 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
+
+  <!--  <distributionManagement>
+        <repository>
+            <id>proficio-repository</id>
+            <name>Proficio Repository</name>
+            <url>file://${basedir}/target/deploy</url>
+        </repository>
+    </distributionManagement>-->
+
 	<build>
+        <!-- 被自己蠢死，不管怎么说，一下配置可以打出可运行jar-->
     	<plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>merge4chong.MergeApplication</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
+
             </plugin>
+
             <plugin>
+
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>merge4chong.MergeApplication</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
-            <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>1.2.1</version>
-        <executions>
-            <execution>
-                <phase>package</phase>
-                <goals>
-                        <goal>shade</goal>
-                </goals>
-                    <configuration>
-                        <transformers>
-                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                <mainClass>xiaodong.mail_4_linlin.App</mainClass>
-                            </transformer>
-                        </transformers>
-                    </configuration>
-            </execution>
-        </executions>
-     </plugin>
         </plugins>
-	</build>
+
+    </build>
 </project>

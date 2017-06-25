@@ -22,7 +22,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import au.com.bytecode.opencsv.CSVReader;
 /**
  * thanks for
- * {@link https://github.com/eaorak/excelr/blob/master/src/main/java/co/elron/utils/excelr/ExcelReader.java}
+ * @link https://github.com/eaorak/excelr/blob/master/src/main/java/co/elron/utils/excelr/ExcelReader.java
  * @author Forrest
  *
  * @param <T>
